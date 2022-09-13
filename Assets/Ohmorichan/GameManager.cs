@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    int _score = default;
+    static int _score = default;
     public int Score
     {
         get => _score;
@@ -17,5 +17,10 @@ public class GameManager : MonoBehaviour
         _timer += Time.deltaTime;
         // score‚Éƒ^ƒCƒ€‚Æ“|‚µ‚½“G‚Ì”‚ğŠÓ‚İ‚½ƒXƒRƒA‚ğ‘ã“ü‚·‚é
         _score = (int)_timer + (/*“|‚µ‚½“G*/10) * 100; 
+    }
+
+    void ScoreReset()
+    {
+        _score = 0;
     }
 }
