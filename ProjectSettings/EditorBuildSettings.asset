@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Kudo/Result.unity
+    guid: ce84bacb389aef440b1ee0c98f375357
   m_configObjects: {}
