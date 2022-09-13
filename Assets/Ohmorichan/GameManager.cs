@@ -10,5 +10,12 @@ public class GameManager : MonoBehaviour
         get => _score;
     }
 
-    
+    float _timer = default;
+
+    private void Update()
+    {
+        _timer += Time.deltaTime;
+        // scoreにタイムと倒した敵の数を鑑みたスコアを代入する
+        _score = (int)_timer + (/*倒した敵*/10) * 100; 
+    }
 }
