@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb7ac1230866ff8438895774e93da530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 3442562083421071315, guid: 65e17eaaf6ec0a34eb230eea3df0dba2, type: 3}
+  _enemy: {fileID: 3264356154597242750, guid: c986592f67bc20d4596806cd9cd86db6, type: 3}
   _cooltime: 1
 --- !u!1 &71193688
 GameObject:
@@ -331,7 +331,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98109552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.63, y: -1.36, z: 0}
+  m_LocalPosition: {x: 0.14, y: -0.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

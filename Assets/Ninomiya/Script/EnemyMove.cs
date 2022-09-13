@@ -37,19 +37,12 @@ public class EnemyMove : MonoBehaviour
         _distance = Vector3.Distance(_position, _target);
        if(_distance >= _stop)
         {
-            var random = Random.Range(0, 1f);
-            if(_randomcount > random)
-            {
                 Vector3 dir = (_target - this.transform.position).normalized * _movespeed;
                 _rb.velocity = dir * _movespeed2;
+            if(_target.x > this.transform.position.x)
+            {
+                transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
             }
-            //else if(_randomcount < random)
-            //{
-                //float sin = Mathf.Sin(Time.time);
-                //this.transform.position = new Vector3(this.transform.position.x,this.transform.position.y + sin, 0);
-                //Vector3 dir = (_target - this.transform.position).normalized * _movespeed;
-               // _rb.velocity = dir * _movespeed2;
-            //}
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
