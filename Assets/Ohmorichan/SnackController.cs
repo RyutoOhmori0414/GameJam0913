@@ -26,7 +26,7 @@ public class SnackController: MonoBehaviour
             _snackHPSlider.value = _currentSnackHP / _snackHP;
             if (_currentSnackHP < 0f)
             {
-
+                Destroy(this.gameObject);
             }
         }
     }
