@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class SnackController: MonoBehaviour
 {
@@ -23,8 +24,8 @@ public class SnackController: MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             _currentSnackHP -= 1f;
-            _snackHPSlider.value = _currentSnackHP / _snackHP;
-            if (_currentSnackHP < 0f)
+            _snackHPSlider.DOValue(_currentSnackHP / _snackHP, 0.5f);
+            if (_currentSnackHP <= 0f)
             {
                 Destroy(this.gameObject);
             }
