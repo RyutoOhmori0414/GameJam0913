@@ -8,6 +8,8 @@ public class EnemyR : MonoBehaviour
     [SerializeField] float _cooltime;
     float _time;
     [SerializeField] Vector3 _target;
+
+    GameObject _snack;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +19,12 @@ public class EnemyR : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EnemyRespawn();
-        RotateA();
+        _snack = GameObject.FindGameObjectWithTag("Snack");
+        if (_snack)
+        {
+            EnemyRespawn();
+            RotateA();
+        }
     }
     public void EnemyRespawn()
     {
@@ -31,7 +37,7 @@ public class EnemyR : MonoBehaviour
     }
     public void RotateA()
     {
-        _target = GameObject.FindGameObjectWithTag("Snack").transform.position;
+        _target = _snack.transform.position;
         transform.RotateAround(_target, Vector3.forward, 30 * Time.deltaTime);
     }
 }

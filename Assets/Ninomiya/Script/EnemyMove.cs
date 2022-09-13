@@ -15,13 +15,11 @@ public class EnemyMove : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        EnemyMoves();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        EnemyMoves();
-    }
+   
     public void EnemyDamege(int damage)
     {
         _hp -= damage;
@@ -43,9 +41,13 @@ public class EnemyMove : MonoBehaviour
             {
                 transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
             }
+            else
+            {
+                transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+            }
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Snack")
         {
