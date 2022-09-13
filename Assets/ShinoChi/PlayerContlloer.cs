@@ -9,11 +9,19 @@ public class PlayerContlloer : MonoBehaviour
     [SerializeField] Transform attackPoint = null;
     [SerializeField, Range(0, 10)] int attackLimit = 0;
     Rigidbody2D _rb;
+
+    float _attackcounter = 0;
+    public float AttackCounter
+    {
+        get => _attackcounter;
+    }
+
     //Animator _ani;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
       //  _ani = GetComponent<Animator>();
+        _attackcounter = 0;
     }
 
     // Update is called once per frame
@@ -44,10 +52,12 @@ public class PlayerContlloer : MonoBehaviour
         }
     }
 
-
-
-    void AttackCounter()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        float attackcounter = 0;
+        if (collision.gameObject.CompareTag("Enemy") && Input.GetButton("Fire1"))
+        {
+            Destroy(collision.gameObject);
+            _attackcounter++;
+        }
     }
 }

@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    static int _score = default;
-    public int Score
+    static float _score = default;
+    public float Score
     {
         get => _score;
     }
 
     float _timer = default;
+    PlayerContlloer _contlloer;
+    private void Start()
+    {
+        _contlloer = FindObjectOfType<PlayerContlloer>();
+    }
 
     private void Update()
     {
         _timer += Time.deltaTime;
         // score‚Éƒ^ƒCƒ€‚Æ“|‚µ‚½“G‚Ì”‚ğŠÓ‚İ‚½ƒXƒRƒA‚ğ‘ã“ü‚·‚é
-        _score = (int)_timer + (/*“|‚µ‚½“G*/10) * 100; 
+        _score = _timer + (_contlloer.AttackCounter * 10) * 100; 
     }
 
     void ScoreReset()
