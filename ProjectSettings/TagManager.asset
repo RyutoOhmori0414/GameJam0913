@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Undefined
+  - Target
+  - Snack
   layers:
   - Default
   - TransparentFX

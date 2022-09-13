@@ -169,6 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 3264356154597242750, guid: c986592f67bc20d4596806cd9cd86db6, type: 3}
   _cooltime: 1
+  _rotateTarget: {x: 0, y: 0, z: 0}
 --- !u!1 &71193688
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +267,7 @@ GameObject:
   - component: {fileID: 98109555}
   m_Layer: 0
   m_Name: Target
-  m_TagString: Snak
+  m_TagString: Snack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -33,7 +33,7 @@ public class EnemyMove : MonoBehaviour
     public void EnemyMoves()
     {
         _position = this.transform.position;
-        _target = GameObject.FindGameObjectWithTag("Snak").transform.position;
+        _target = GameObject.FindGameObjectWithTag("Snack").transform.position;
         _distance = Vector3.Distance(_position, _target);
        if(_distance >= _stop)
         {
@@ -43,11 +43,12 @@ public class EnemyMove : MonoBehaviour
             {
                 transform.rotation = new Quaternion(0f, 180f, 0f, 0f);
             }
+
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Snak")
+        if(collision.gameObject.tag == "Snack")
         {
             Destroy(this.gameObject);
         }
