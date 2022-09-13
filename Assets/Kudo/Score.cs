@@ -19,7 +19,7 @@ public class Score : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _scoreText.text = $"{String.Format("{0:000000}", _score)}";
+        _scoreText.text = $"{String.Format("{0:000000000}", _score)}";
     }
 
     void ScoreChangeValue(int score)

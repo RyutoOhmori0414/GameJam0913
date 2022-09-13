@@ -9,7 +9,7 @@ public class PlayerContlloer : MonoBehaviour
     [SerializeField] Transform attackPoint = null;
     [SerializeField, Range(0, 10)] int attackLimit = 0;
     Rigidbody2D _rb;
-
+    AudioSource _audio;
     bool _move = false;
 
     float _attackcounter = 0;
@@ -30,6 +30,7 @@ public class PlayerContlloer : MonoBehaviour
       //  _ani = GetComponent<Animator>();
         _attackcounter = 0;
         _move = false;
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,14 +42,15 @@ public class PlayerContlloer : MonoBehaviour
             float tate = Input.GetAxisRaw("Vertical");
             Vector2 dir = new Vector2(yoko, tate).normalized;
             _rb.velocity = dir * movePower;
-            if (_rb.velocity != Vector2.zero)
-            {
-                this.transform.up = _rb.velocity;
-            }
+            //if (_rb.velocity != Vector2.zero)
+            //{
+            //    this.transform.up = _rb.velocity;
+            //}
 
             if (Input.GetButtonDown("Fire1"))
             {
                 Fire1();
+                _audio.Play();
             }
         }
         
