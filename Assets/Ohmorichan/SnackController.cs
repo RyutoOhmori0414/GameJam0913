@@ -19,7 +19,7 @@ public class SnackController: MonoBehaviour
         _snackHPSlider.value = _currentSnackHP / _snackHP;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -28,7 +28,6 @@ public class SnackController: MonoBehaviour
             if (_currentSnackHP <= 0f)
             {
                 Destroy(this.gameObject);
-                FindObjectOfType<UIController>().GameEnd();
             }
         }
     }
