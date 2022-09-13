@@ -13,7 +13,7 @@ public class Score : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ScoreChangeValue(1000);
+        ScoreChangeValue((int)GameManager.Score);
     }
 
     // Update is called once per frame
@@ -25,5 +25,10 @@ public class Score : MonoBehaviour
     void ScoreChangeValue(int score)
     {
         DOTween.To(() => _score, x => _score = x, score, scoreChangeSpeed);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.ScoreReset();
     }
 }

@@ -10,10 +10,17 @@ public class PlayerContlloer : MonoBehaviour
     [SerializeField, Range(0, 10)] int attackLimit = 0;
     Rigidbody2D _rb;
 
+    bool _move = false;
+
     float _attackcounter = 0;
     public float AttackCounter
     {
         get => _attackcounter;
+    }
+
+    private void OnEnable()
+    {
+        GameManager.GameStart += PlayerStart;
     }
 
     //Animator _ani;
@@ -22,24 +29,29 @@ public class PlayerContlloer : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
       //  _ani = GetComponent<Animator>();
         _attackcounter = 0;
+        _move = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float yoko = Input.GetAxisRaw("Horizontal");
-        float tate = Input.GetAxisRaw("Vertical");
-        Vector2 dir = new Vector2(yoko, tate).normalized;
-        _rb.velocity = dir * movePower;
-        if (_rb.velocity != Vector2.zero)
+        if (_move)
         {
-            this.transform.up = _rb.velocity;
-        }
+            float yoko = Input.GetAxisRaw("Horizontal");
+            float tate = Input.GetAxisRaw("Vertical");
+            Vector2 dir = new Vector2(yoko, tate).normalized;
+            _rb.velocity = dir * movePower;
+            if (_rb.velocity != Vector2.zero)
+            {
+                this.transform.up = _rb.velocity;
+            }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Fire1();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Fire1();
+            }
         }
+        
     }
 
     void Fire1()
@@ -59,5 +71,15 @@ public class PlayerContlloer : MonoBehaviour
             Destroy(collision.gameObject);
             _attackcounter++;
         }
+    }
+
+    void PlayerStart()
+    {
+        _move = true;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.GameStart -= PlayerStart;
     }
 }

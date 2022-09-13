@@ -12,6 +12,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField] float _stop;
     float _randomcount = 0.5f;
     // Start is called before the first frame update
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
