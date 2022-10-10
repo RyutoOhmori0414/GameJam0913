@@ -6,8 +6,9 @@ public class PlayerContlloer : MonoBehaviour
 {
     [SerializeField] float movePower = 10f;
     [SerializeField] GameObject attack = null;
-    [SerializeField] Transform attackPoint = null;
-    [SerializeField, Range(0, 10)] int attackLimit = 0;
+    
+    
+    CircleCollider2D attackcollider;
     Rigidbody2D _rb;
     AudioSource _audio;
     bool _move = false;
@@ -27,6 +28,8 @@ public class PlayerContlloer : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        attackcollider = GetComponent<CircleCollider2D>();
+        attackcollider.enabled = false;
       //  _ani = GetComponent<Animator>();
         _attackcounter = 0;
         _move = false;
@@ -49,6 +52,7 @@ public class PlayerContlloer : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1"))
             {
+                StartCoroutine(Collider());
                 Fire1();
                 _audio.Play();
             }
@@ -58,21 +62,30 @@ public class PlayerContlloer : MonoBehaviour
 
     void Fire1()
     {
-        if (attack && attackPoint) 
+        if (attack) 
         {
-            GameObject go = Instantiate(attack, attackPoint.position, attack.transform.rotation); 
-            go.transform.SetParent(this.transform);
-           // _ani.Play("attack");
+            GameObject go =  Instantiate(attack, transform.position, Quaternion.identity); 
+            go.transform.SetParent(this.gameObject.transform);
+           
+            // _ani.Play("attack");
         }
+        
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") && Input.GetButton("Fire1"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(collision.gameObject);
             _attackcounter++;
         }
+    }
+
+    IEnumerator Collider()  //攻撃判定のコライダーを0.3秒だけ表示
+    {
+        attackcollider.enabled = true;
+        yield return new WaitForSeconds(0.3f);
+        attackcollider.enabled = false;
     }
 
     void PlayerStart()
